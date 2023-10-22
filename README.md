@@ -3,11 +3,16 @@
 
 ## Introduction
     Imagine you're the owner of an online store that sells various products to customers.
-    As the owner of the store, you want to keep track of the sales made by your customers and gain insights that will help you make better business decisions. In order to achieve that, you want to create a database that stores data about your products, sales, and customers to be able to perform different analyses using this data to make data-driven decisions that will help you grow your business.
+    As the owner of the store, you want to keep track of the sales made by your customers and gain insights
+    that will help you make better business decisions.
+    In order to achieve that, you want to create a database that stores data about your products, sales, and customers
+    to be able to perform different analyses using this data to make data-driven decisions that will help you grow your business.
     In this project, we will achieve that using Python as our programming language and MySQL as our database management system (DBMS).
 
 ## Aim of The Project
-    In this project, a database will be created and 3 tables will be added to our database in order to store data about products, sales, and customers respectively. Also, two sales analyses will be performed just to show how to extract data from the database and use it in analysis.
+    In this project, a database will be created and 3 tables will be added to our database
+    in order to store data about products, sales, and customers respectively.
+    Also, two sales analyses will be performed just to show how to extract data from the database and use it in analysis.
 
 ## Creating The Database, Adding Tables and Sample Data.
     Firstly, the following queries were specified:
@@ -88,3 +93,47 @@ except Error as err:
 ```
 
 
+## About Data
+    The data used in this project is randomly generated.
+    We have three tables of data
+    1. Products
+   
+| Column                  | Description                                | Data Type      |
+| :---------------------- | :----------------------------------------- | :------------- |
+| product_id              | Product id number and its a unique value   | INT            |
+| product_name            | name of the product                        | VARCHAR(50)    |
+| unit_cost               | price of the product                       | DECIMAL(10, 2) |
+
+    1. Customers
+
+| Column                  | Description                                | Data Type      |
+| :---------------------- | :----------------------------------------- | :------------- |
+| customer_id             | Customer id number and its a unique value  | INT            |
+| first_name              | first name of a customer                   | VARCHAR(15)    |
+| last_name               | last name of a customer                    | VARCHAR(15)    |
+| email                   | email of the customer                      | VARCHAR(50)    |
+| phone_num               | phone number of the customer               | VARCHAR(15)    |
+
+    3. Sales
+
+| Column                  | Description                                | Data Type      |
+| :---------------------- | :----------------------------------------- | :------------- |
+| sale_id                 | sale id number and its a unique value      | INT            |
+| sale_date               | date when the sale occured                 | DATE           |
+| customer_id             | customer id imported as a foriegn key      | INT            |
+| product_id              | product id imported as a foriegn key       | INT            |
+| quantity                | quantity of the sold product               | INT            |
+| unit_price              | price of one unit of a product             | DECIMAL(10,2)  |
+| total_price             | the total price paid by the customer       | Decimal(10,2)  |
+
+    Sales table has two foriegn key, cutomer_id and product_id which are the primary keys of the customers table and products table respectively.
+
+## Performing Sales Analysis.
+    Two types of sales analysis were performed in order to show how to extract data from the database and use it in analysis.
+1. Total sales by Month.
+![sales_by_month](https://github.com/mahmoudsamhoud/Online-Store-Sales-Analysis/assets/78819528/742f18b7-069b-4fa5-a2a1-81faac2c682f)
+
+2. Total sales by product.
+![sales_by_product](https://github.com/mahmoudsamhoud/Online-Store-Sales-Analysis/assets/78819528/a29d28b1-853a-41a9-9ee8-245474745775)
+   
+PS: the data used in this project is randomly generated. So, every time we run the code we will get different results.
