@@ -19,11 +19,72 @@
         6. insert_sales_data: to insert the sales data
         7. insert_customers_data: to insert the customers' data
 
-        These queries are provided in detail in the [Code.ipynb](https://github.com/mahmoudsamhoud/Online-Store-Sales-Analysis/blob/main/Code.ipynb)
+These queries are provided in detail in the [Code.ipynb](https://github.com/mahmoudsamhoud/Online-Store-Sales-Analysis/blob/main/Code.ipynb) file.
 
-        The database is created using the following code.
-        ```SQL
+The database is created using the following code.
+```sql
+        try:
+    with connect(
+        host="localhost",
+        user = input ("Username:"),
+         password = getpass ("Password:"),
+    ) as connection:
+        create_db_query = "CREATE DATABASE IF NOT EXISTS online_store_sales"
+        with connection.cursor() as cursor:
+            cursor.execute(create_db_query)
+            connection.commit()
+except Error as err:
+    print(err)
+```
+Then we connect to the database and add tables and sample data using the following code
+```sql
+try:
+    with connect(
+        host="localhost",
+        user = input ("Username:"),
+         password = getpass ("Password:"),
+        database = "online_store_sales"
+    ) as connection:
+        with connection.cursor() as cursor:
+            print (connection)
         
-        ```
+        # Addint tables to the database
+        with connection.cursor() as cursor:
+            cursor.execute(create_products_table_query)
+            cursor.execute(create_customers_table_query)
+            cursor.execute(create_sales_table_query)
+            connection.commit()   
+        
+        # Adding data to products table
+        with connection.cursor() as cursor:
+            cursor.executemany(insert_products_data, products)
+            connection.commit()
+        
+        # Adding data to customers table
+        with connection.cursor() as cursor:
+            cursor.executemany(insert_customers_data, customers)
+            connection.commit()
+        
+        # Adding data to sales table
+        with connection.cursor() as cursor:
+            for i in range(1000):
+                #pick a random day between 1-1-2023 and 1-10-2023
+                sale_date = start_date + datetime.timedelta(days=random.randint(0, 303))
+                # pick a random customer_id 
+                customer_id = random.randint(1, len(customers))
+                # pick a random product_id
+                product_id = random.randint(1, len(products))
+                # pick a random quantity
+                quantity = random.randint(1, 10)
+                # pick a random unit_price
+                unit_price = products[product_id-1][1]
+                total_price = quantity * unit_price
+                cursor.execute(insert_sales_data,(sale_date, customer_id, product_id, quantity, unit_price, total_price))
+            connection.commit()
+        
+            print ("Database created successfully!")
+except Error as err:
+    print(err)
+```
 
 
