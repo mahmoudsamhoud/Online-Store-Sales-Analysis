@@ -7,4 +7,23 @@
     In this project, we will achieve that using Python as our programming language and MySQL as our database management system (DBMS).
 
 ## Aim of The Project
-    In this project, a database will be created and 3 tables will be added to our database in order to store data about products, sales, and customers respectively.
+    In this project, a database will be created and 3 tables will be added to our database in order to store data about products, sales, and customers respectively. Also, two sales analyses will be performed just to show how to extract data from the database and use it in analysis.
+
+## Creating The Database, Adding Tables and Sample Data.
+    Firstly, the following queries were specified:
+        1. create_db_query: to create the database.
+        2. create_products_table_query: to create the products table.
+        3. create_sales_table_query: to create the sales table.
+        4. create_customers_table_query: to create the customers' table.
+        5. insert_products_data: to insert the products data
+        6. insert_sales_data: to insert the sales data
+        7. insert_customers_data: to insert the customers' data
+
+        These queries are provided in detail in the [Code.ipynb](https://github.com/mahmoudsamhoud/Online-Store-Sales-Analysis/blob/main/Code.ipynb)
+
+        The database is created using the following code.
+        ```SQL
+        
+        ```
+
+
